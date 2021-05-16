@@ -16,7 +16,7 @@
         android:layout_marginRight="34dp"
         android:layout_marginBottom="140dp"
         android:onClick="addTask"
-        android:text="ADD TASKS"
+        android:text="ADD TASK"
         app:backgroundTint="#4CAF50"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button"
