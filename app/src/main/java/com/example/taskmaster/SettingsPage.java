@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -36,5 +37,13 @@ passed_name.apply();
 
 
         });
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent back = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(back);
+        return true;
     }
 }
