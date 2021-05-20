@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     String title;
     String body;
     String state;
-    ArrayList<Task> tasks=new ArrayList<>();
+    ArrayList<Task> tasks = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +44,12 @@ public class MainActivity extends AppCompatActivity {
         taskTitle = findViewById(R.id.textView11);
         taskBody = findViewById(R.id.textView12);
         taskState = findViewById(R.id.textView13);
+        tasks.add(new Task("First Task", "Done", "Complete"));
+        tasks.add(new Task("Second Task", "Done", "New"));
+        tasks.add(new Task("Third Task", "Done", "In progress"));
 
         RecyclerView tasksRecyclerView = findViewById(R.id.recyclerView);
-        TaskAdapter taskAdapter=new  TaskAdapter(this,tasks);
+        TaskAdapter taskAdapter = new TaskAdapter(this, tasks);
         tasksRecyclerView.setAdapter(taskAdapter);
 
         tasksRecyclerView.setLayoutManager(new LinearLayoutManager(this));
