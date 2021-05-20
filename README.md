@@ -17,8 +17,8 @@ create an `all tasks activity` should just be an image with a back button .
   - Also has a details of that task -for now its a "Lorem Ipsum text"- .
 - **Setting**
    - create a `setting activity` , which allows the user to add her/his name which shown up on both of `main` and `details` activities. which allows the user .
-# Lab: 28
-# Lab: 29
+# Lab: 28 - RecyclerView
+# Lab: 29 - Room
 ### Wireframes
 # ![main](screenshots/main.JPG)
 # ![add task](screenshots/add.JPG)
