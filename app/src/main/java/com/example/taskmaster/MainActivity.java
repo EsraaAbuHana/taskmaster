@@ -8,13 +8,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity implements TaskAdapter.OnTaskListener {
     Button addTask, allTasks;
     Button task1, task2, task3;
     String title1;
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity  {
     String title;
     String body;
     String state;
-    ArrayList<Task> tasks = new ArrayList<>();
+    private  ArrayList<Task> tasks = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,13 +50,12 @@ public class MainActivity extends AppCompatActivity  {
         tasks.add(new Task("Third Task", "lorem ipsum ", "In progress"));
 
         RecyclerView tasksRecyclerView = findViewById(R.id.recyclerView);
-        TaskAdapter taskAdapter = new TaskAdapter(tasks);
+        TaskAdapter taskAdapter = new TaskAdapter(tasks,this::onTaskClick);
         tasksRecyclerView.setAdapter(taskAdapter);
         tasksRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         //        tasksRecyclerView.setLayoutManager(new LinearLayoutManager(this).setOrientation(RecyclerView.VERTICAL));
 
     }
-
 
 
     public void addTask(View view) {
@@ -71,5 +71,24 @@ public class MainActivity extends AppCompatActivity  {
     public void setting(View view) {
         Intent setting = new Intent(MainActivity.this, SettingsPage.class);
         startActivity(setting);
+    }
+
+//    Intent details3 = new Intent(MainActivity.this, TaskDetailPage.class);
+//        details3.putExtra("title",title3);
+//
+//    startActivity(details3);
+//
+//}
+    @Override
+    public void onTaskClick(int position) {
+        tasks.get(position);
+//        Log.d(TAG, "onTaskClick: clicked");
+
+        Intent intent=new Intent(this,TaskDetailPage.class);
+intent.putExtra("title",tasks.get(position).getTitle());
+        intent.putExtra("body",tasks.get(position).getBody());
+        intent.putExtra("state",tasks.get(position).getState());
+
+        startActivity(intent);
     }
 }

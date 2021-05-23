@@ -16,42 +16,63 @@ import java.util.ArrayList;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder> {
     public ArrayList<Task> tasks = new ArrayList<Task>();
+    private OnTaskListener mOnTaskListener;
 
-    public TaskAdapter(ArrayList<Task> tasks) {
+    public TaskAdapter(ArrayList<Task> tasks, OnTaskListener onTaskListener) {
         this.tasks = tasks;
+        this.mOnTaskListener = onTaskListener;
     }
 
-    public static class TaskViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener  {
+    public static class TaskViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public Task task;
         //    public View taskView;
         public TextView taskTitle;
         public TextView taskBody;
         public TextView taskState;
-        public TaskViewHolder(View taskView) {
+        OnTaskListener onTaskListener;
+
+        public TaskViewHolder(View taskView, OnTaskListener onTaskListener) {
             super(taskView);
 //        this.taskTitle=taskTitle;
             taskTitle = taskView.findViewById(R.id.textView11);
             taskBody = taskView.findViewById(R.id.textView12);
             taskState = taskView.findViewById(R.id.textView13);
-
+            this.onTaskListener = onTaskListener;
+            taskView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-
+            onTaskListener.onTaskClick(getAdapterPosition());
         }
+
+//        @Override
+//        public void onClick(View view) {
+//            int taskPosition = RecyclerView.getChildLayoutPosition(view);
+////            String item = mList.get(itemPosition);
+////            Toast.makeText(mContext, item, Toast.LENGTH_LONG).show();
+//            int taskPosition=getAdapterPosition();
+//            Intent intent;
+//        }
+    }
+
+    public interface OnTaskListener {
+        void onTaskClick(int position);
     }
 
     @NonNull
     @Override
     public TaskAdapter.TaskViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_task, parent, false);
-        TaskViewHolder viewHolder = new TaskViewHolder(view);
+//        TaskViewHolder viewHolder = new TaskViewHolder(view,mOnTaskListener);
         //action of the listener
 //public void taskListener{
-//   
+//
 //        }
-        return viewHolder;
+
+
+        return new TaskViewHolder(view, mOnTaskListener);
+
 
     }
 
