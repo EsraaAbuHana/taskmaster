@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
     Button addTask, allTasks;
     Button task1, task2, task3;
     String title1;
@@ -44,17 +44,19 @@ public class MainActivity extends AppCompatActivity {
         taskTitle = findViewById(R.id.textView11);
         taskBody = findViewById(R.id.textView12);
         taskState = findViewById(R.id.textView13);
-        tasks.add(new Task("First Task", "Done", "Complete"));
-        tasks.add(new Task("Second Task", "Done", "New"));
-        tasks.add(new Task("Third Task", "Done", "In progress"));
+        tasks.add(new Task("First Task", "lorem ipsum", "Complete"));
+        tasks.add(new Task("Second Task", "lorem ipsum", "New"));
+        tasks.add(new Task("Third Task", "lorem ipsum ", "In progress"));
 
         RecyclerView tasksRecyclerView = findViewById(R.id.recyclerView);
-        TaskAdapter taskAdapter = new TaskAdapter(this, tasks);
+        TaskAdapter taskAdapter = new TaskAdapter(tasks);
         tasksRecyclerView.setAdapter(taskAdapter);
-
         tasksRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        //        tasksRecyclerView.setLayoutManager(new LinearLayoutManager(this).setOrientation(RecyclerView.VERTICAL));
 
     }
+
+
 
     public void addTask(View view) {
         Intent add = new Intent(MainActivity.this, AddTask.class);
