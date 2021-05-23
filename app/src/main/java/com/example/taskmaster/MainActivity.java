@@ -3,6 +3,7 @@ package com.example.taskmaster;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements TaskAdapter.OnTaskListener {
     Button addTask, allTasks;
@@ -27,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.OnTas
     String title;
     String body;
     String state;
-    private  ArrayList<Task> tasks = new ArrayList<>();
+    private ArrayList<Task> tasks = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,13 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.OnTas
         setContentView(R.layout.activity_main);
         addTask = findViewById(R.id.button2);
         allTasks = findViewById(R.id.button);
+
+        //create an instance of the database
+        DBTask db = Room.databaseBuilder(getApplicationContext(),
+                DBTask.class, "task").build();
+        //get an instance of the DAO
+        DAOsTask dAOsTask = db.dAOsTask();
+        ArrayList<Task> tasks = dAOsTask.getAll();
 
 //        display “{username}’s tasks” above the three task buttons.
         TextView userTasks = findViewById(R.id.textView8);
@@ -50,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.OnTas
         tasks.add(new Task("Third Task", "lorem ipsum ", "In progress"));
 
         RecyclerView tasksRecyclerView = findViewById(R.id.recyclerView);
-        TaskAdapter taskAdapter = new TaskAdapter(tasks,this::onTaskClick);
+        TaskAdapter taskAdapter = new TaskAdapter(tasks, this::onTaskClick);
         tasksRecyclerView.setAdapter(taskAdapter);
         tasksRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         //        tasksRecyclerView.setLayoutManager(new LinearLayoutManager(this).setOrientation(RecyclerView.VERTICAL));
@@ -73,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.OnTas
         startActivity(setting);
     }
 
-//    Intent details3 = new Intent(MainActivity.this, TaskDetailPage.class);
+    //    Intent details3 = new Intent(MainActivity.this, TaskDetailPage.class);
 //        details3.putExtra("title",title3);
 //
 //    startActivity(details3);
@@ -84,10 +93,10 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.OnTas
         tasks.get(position);
 //        Log.d(TAG, "onTaskClick: clicked");
 
-        Intent intent=new Intent(this,TaskDetailPage.class);
-intent.putExtra("title",tasks.get(position).getTitle());
-        intent.putExtra("body",tasks.get(position).getBody());
-        intent.putExtra("state",tasks.get(position).getState());
+        Intent intent = new Intent(this, TaskDetailPage.class);
+        intent.putExtra("title", tasks.get(position).getTitle());
+        intent.putExtra("body", tasks.get(position).getBody());
+        intent.putExtra("state", tasks.get(position).getState());
 
         startActivity(intent);
     }
