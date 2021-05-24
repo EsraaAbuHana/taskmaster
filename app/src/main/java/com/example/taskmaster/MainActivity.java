@@ -29,7 +29,8 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.OnTas
     String title;
     String body;
     String state;
-    private ArrayList<Task> tasks = new ArrayList<>();
+    ///stuck
+    private ArrayList<Task> tasks = DBTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,9 +95,12 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.OnTas
 //        Log.d(TAG, "onTaskClick: clicked");
 
         Intent intent = new Intent(this, TaskDetailPage.class);
-        intent.putExtra("title", tasks.get(position).getTitle());
-        intent.putExtra("body", tasks.get(position).getBody());
-        intent.putExtra("state", tasks.get(position).getState());
+        Task task=new task(tasks.get(position).getTitle(), tasks.get(position).getBody(),tasks.get(position).getState()
+        );
+        DBTask.get
+//        intent.putExtra("title", tasks.get(position).getTitle());
+//        intent.putExtra("body", tasks.get(position).getBody());
+//        intent.putExtra("state", tasks.get(position).getState());
 
         startActivity(intent);
     }
