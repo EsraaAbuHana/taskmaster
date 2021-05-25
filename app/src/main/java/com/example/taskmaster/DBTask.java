@@ -11,9 +11,9 @@ import androidx.room.RoomDatabase;
 public abstract class DBTask extends RoomDatabase {
     public abstract DAOsTask dAOsTask();
     private static volatile DBTask dbTask;
-    public synchronized DBTask getInstance(Context context){
+    public static synchronized DBTask getInstance(Context context){
         if(dbTask==null){
-            DBTask db = Room.databaseBuilder(context,DBTask.class,"task").allowMainThreadQueries().build();
+            DBTask db = Room.databaseBuilder(context.getApplicationContext(),DBTask.class,"dataBaseTask").allowMainThreadQueries().build();
         }
         return dbTask;
     }

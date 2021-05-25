@@ -11,10 +11,10 @@ import java.util.List;
 @Dao
 public interface DAOsTask {
     @Query("SELECT * FROM task")
-    ArrayList<Task> getAll();
+    List<Task> getAll();
 
-    @Query("SELECT * FROM task WHERE taskId =:taskId")
-    Task findById(int userIds);
+//    @Query("SELECT * FROM task WHERE taskId =:taskId")
+//    Task findById(int userIds);
 
     @Insert
     void insertAll(Task task);
