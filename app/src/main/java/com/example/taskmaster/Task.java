@@ -14,7 +14,7 @@ public class Task {
     private String body;
     @ColumnInfo(name = "state")
     private String state;
-
+public Task(){}
     public Task(String title, String body, String state) {
 
         this.title = title;

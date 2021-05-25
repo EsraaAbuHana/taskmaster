@@ -34,18 +34,18 @@ public class TaskFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param title Parameter 1.
-     * @param body Parameter 2.
-     * @param state Parameter 3.
+     * @param mTitle Parameter 1.
+     * @param mBody Parameter 2.
+     * @param mState Parameter 3.
      * @return A new instance of fragment TaskFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static TaskFragment newInstance(String title, String body,String state) {
+    public static TaskFragment newInstance(String mTitle, String mBody,String mState) {
         TaskFragment fragment = new TaskFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, title);
-        args.putString(ARG_PARAM2, body);
-        args.putString(ARG_PARAM3, state);
+        args.putString(ARG_PARAM1, mTitle);
+        args.putString(ARG_PARAM2, mBody);
+        args.putString(ARG_PARAM3, mState);
 
         fragment.setArguments(args);
         return fragment;

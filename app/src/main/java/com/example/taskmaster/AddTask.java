@@ -17,7 +17,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class AddTask extends AppCompatActivity {
-    TextView submit;
+//    TextView submit;
     EditText taskTitle,taskDesc;
     Spinner addState;
     DAOsTask daOsTask;
@@ -32,7 +32,7 @@ public class AddTask extends AppCompatActivity {
        taskTitle= findViewById(R.id.taskTitle);
         taskDesc= findViewById(R.id.taskDesc);
         addState= findViewById(R.id.state);
-        submit = findViewById(R.id.textView4);
+//        submit = findViewById(R.id.textView4);
        TextView totalTasks= findViewById(R.id.total);
 
         String[] taskState = new String[]{"New", "In progress", "Complete"};
@@ -41,8 +41,8 @@ public class AddTask extends AppCompatActivity {
         tasksAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         addState.setAdapter(tasksAdapter);
 //        DBTask.getInstance(getApplicationContext()).dAOsTask();
-        ArrayList<Task> taskList =   (ArrayList<Task>)  DBTask.getInstance(getApplicationContext()).dAOsTask().getAll();
-        totalTasks.setText("Total Tasks: "+ taskList.size());
+//        ArrayList<Task> taskList =   (ArrayList<Task>)  DBTask.getInstance(getApplicationContext()).dAOsTask().getAll();
+//        totalTasks.setText("Total Tasks: "+ taskList.size());
 
         db= Room.databaseBuilder(getApplicationContext(),
                 DBTask.class, "task_database").allowMainThreadQueries().build();
@@ -56,7 +56,7 @@ public class AddTask extends AppCompatActivity {
     }
 
     public void submitTask(View view) {
-        submit.setVisibility(View.VISIBLE);
+//        submit.setVisibility(View.VISIBLE);
 //
 //        EditText taskTitle= findViewById(R.id.taskTitle);
 //        EditText taskDesc= findViewById(R.id.taskDesc);
@@ -67,7 +67,7 @@ public class AddTask extends AppCompatActivity {
         String description = taskDesc.getText().toString();
         String state = addState.getSelectedItem().toString();
 
-        Task task = new Task(title,description,state);
+        Task task = new Task();
         task.setTitle(title);
         task.setBody(description);
         task.setState(state);

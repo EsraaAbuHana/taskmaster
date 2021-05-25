@@ -16,6 +16,7 @@ public abstract class DBTask extends RoomDatabase {
             DBTask db = Room.databaseBuilder(context.getApplicationContext(),DBTask.class,"dataBaseTask").allowMainThreadQueries().build();
         }
         return dbTask;
+
     }
 
 }
