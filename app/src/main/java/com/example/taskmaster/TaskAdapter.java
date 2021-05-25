@@ -13,12 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder> {
-    public ArrayList<Task> tasks = new ArrayList<Task>();
+    public List<Task> tasks = new ArrayList<Task>();
     private OnTaskListener mOnTaskListener;
 
-    public TaskAdapter(ArrayList<Task> tasks, OnTaskListener onTaskListener) {
+    public TaskAdapter(List<Task> tasks, OnTaskListener onTaskListener) {
         this.tasks = tasks;
         this.mOnTaskListener = onTaskListener;
     }
@@ -64,7 +65,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
     @Override
     public TaskAdapter.TaskViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_task, parent, false);
-//        TaskViewHolder viewHolder = new TaskViewHolder(view,mOnTaskListener);
+        TaskViewHolder viewHolder = new TaskViewHolder(view,mOnTaskListener);
         //action of the listener
 //public void taskListener{
 //
