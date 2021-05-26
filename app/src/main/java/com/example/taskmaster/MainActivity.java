@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.OnTas
         RecyclerView tasksRecyclerView = findViewById(R.id.recyclerView);
         tasksRecyclerView.setAdapter(new TaskAdapter(tasks, this));
        tasksRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-              tasksRecyclerView.setLayoutManager(new LinearLayoutManager(this).setOrientation(RecyclerView.VERTICAL));
+              tasksRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
     }
 
