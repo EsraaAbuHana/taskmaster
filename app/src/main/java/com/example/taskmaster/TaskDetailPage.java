@@ -21,7 +21,6 @@ public class TaskDetailPage extends AppCompatActivity {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         String title = getIntent().getStringExtra("title");
         String body1 = getIntent().getStringExtra("body");
-        String state1 = getIntent().getStringExtra("state");
         task_heading.setText(sharedPreferences.getString("username", "User") + "'s " + title + " Detail");
         body.setText(body1);
         if (title == null) {

@@ -12,17 +12,13 @@ import android.widget.EditText;
 
 public class SettingsPage extends AppCompatActivity {
 
-    String user_name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings_page);
 
         Button submit =findViewById(R.id.button7);
-//
-//        SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(this);
-//        SharedPreferences.Editor passed_name=sharedPreferences.edit();
-//        //       user_name=sharedPreferences.getString();
+
         submit.setOnClickListener((view)->{
             EditText user_name_field=findViewById(R.id.editTextTextPersonName3);
             String name =user_name_field.getText().toString();
@@ -32,9 +28,6 @@ public class SettingsPage extends AppCompatActivity {
 passed_name.apply();
             Intent main=new Intent(SettingsPage.this,MainActivity.class);
             startActivity(main);
-            //       user_name=sharedPreferences.getString();
-
-
 
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
