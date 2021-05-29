@@ -19,8 +19,7 @@ import java.util.ArrayList;
 public class AddTask extends AppCompatActivity {
     EditText taskTitle,taskDesc;
     Spinner addState;
-    DAOsTask daOsTask;
-    DBTask db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
