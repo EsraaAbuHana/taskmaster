@@ -16,12 +16,10 @@ public class Task {
     private String state;
 public Task(){}
     public Task(String title, String body, String state) {
-
         this.title = title;
         this.body = body;
         this.state = state;
     }
-
     public String getState() {
         return state;
     }
@@ -44,5 +42,15 @@ public Task(){}
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "taskId=" + taskId +
+                ", title='" + title + '\'' +
+                ", body='" + body + '\'' +
+                ", state='" + state + '\'' +
+                '}';
     }
 }

@@ -13,7 +13,7 @@ public abstract class DBTask extends RoomDatabase {
     private static volatile DBTask dbTask;
     public static synchronized DBTask getInstance(Context context){
         if(dbTask==null){
-            DBTask db = Room.databaseBuilder(context.getApplicationContext(),DBTask.class,"dataBaseTask").allowMainThreadQueries().build();
+           dbTask = Room.databaseBuilder(context.getApplicationContext(),DBTask.class,"dataBaseTask").allowMainThreadQueries().build();
         }
         return dbTask;
 

@@ -12,17 +12,6 @@ import java.util.List;
 public interface DAOsTask {
     @Query("SELECT * FROM task")
     List<Task> getAll();
-
-//    @Query("SELECT * FROM task WHERE taskId =:taskId")
-//    Task findById(int userIds);
-
     @Insert
-    void insertAll(Task task);
-    //    @Query("SELECT * FROM task WHERE title LIKE :first AND " +
-//            "body LIKE :last LIMIT 1")
-//
-//
-//    @Delete
-//    void delete(Task user);
-
+    void insertAll(Task... tasks);
 }

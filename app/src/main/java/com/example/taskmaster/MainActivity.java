@@ -19,86 +19,45 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements TaskAdapter.OnTaskListener {
     Button addTask, allTasks;
-//    Button task1, task2, task3;
-    String title1;
-    String title2;
-    String title3;
-    private TextView taskTitle;
-    private TextView taskBody;
-    private TextView taskState;
-//    String title;
-//    String body;
-//    String state;
-    ///stuck
-    DBTask db;
-    DAOsTask daOsTask;
-    ArrayList<Task> tasks ;
-
+    ArrayList<Task> tasks=new ArrayList<>() ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         addTask = findViewById(R.id.button2);
         allTasks = findViewById(R.id.button);
-
-        //create an instance of the database
-        db = Room.databaseBuilder(getApplicationContext(),
-                DBTask.class, "dataBaseTask").allowMainThreadQueries().build();
-        //get an instance of the DAO
-        daOsTask = db.dAOsTask();
-        tasks =(ArrayList<Task>)  daOsTask.getAll();
-
-//        display “{username}’s tasks” above the three task buttons.
+        System.out.println("task here**********************************************************************");
+        System.out.println(DBTask.getInstance(getApplicationContext()).dAOsTask().getAll());
+        tasks=(ArrayList<Task>) DBTask.getInstance(getApplicationContext()).dAOsTask().getAll();
+        System.out.println(tasks);
         TextView userTasks = findViewById(R.id.textView8);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         userTasks.setText(sharedPreferences.getString("username", "User") + "'s Tasks");
-
-
-        taskTitle = findViewById(R.id.textView11);
-        taskBody = findViewById(R.id.textView12);
-        taskState = findViewById(R.id.textView13);
-//        taskState =findViewById(R.id.state);
-//        tasks.add(new Task("First Task", "lorem ipsum", "Complete"));
-//        tasks.add(new Task("Second Task", "lorem ipsum", "New"));
-//        tasks.add(new Task("Third Task", "lorem ipsum ", "In progress"));
-
         RecyclerView tasksRecyclerView = findViewById(R.id.recyclerView);
         tasksRecyclerView.setAdapter(new TaskAdapter(tasks, this));
        tasksRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-              tasksRecyclerView.setLayoutManager(new LinearLayoutManager(this).setOrientation(RecyclerView.VERTICAL));
-
     }
-
-
     public void addTask(View view) {
         Intent add = new Intent(MainActivity.this, AddTask.class);
         startActivity(add);
     }
-
     public void allTasks(View view) {
         Intent all = new Intent(MainActivity.this, AllTasks.class);
         startActivity(all);
     }
-
     public void setting(View view) {
         Intent setting = new Intent(MainActivity.this, SettingsPage.class);
         startActivity(setting);
     }
-
-    //    Intent details3 = new Intent(MainActivity.this, TaskDetailPage.class);
-//        details3.putExtra("title",title3);
-//
-//    startActivity(details3);
-//
-//}
     @Override
     public void onTaskClick(int position) {
         Intent intent =new Intent(this, TaskDetailPage.class);
+        System.out.println(tasks.get(position).getTitle());
         intent.putExtra("title",tasks.get(position).getTitle());
+        System.out.println(tasks.get(position).getBody());
         intent.putExtra("body",tasks.get(position).getBody());
+        System.out.println(tasks.get(position).getState());
         intent.putExtra("state",tasks.get(position).getState());
-
         startActivity(intent);
     }
-
 }

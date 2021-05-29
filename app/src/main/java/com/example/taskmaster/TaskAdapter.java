@@ -26,68 +26,41 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
 
     public static class TaskViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public Task task;
-        //    public View taskView;
         public TextView taskTitle;
         public TextView taskBody;
         public TextView taskState;
         OnTaskListener onTaskListener;
-
         public TaskViewHolder(View taskView, OnTaskListener onTaskListener) {
             super(taskView);
-//        this.taskTitle=taskTitle;
             taskTitle = taskView.findViewById(R.id.textView11);
             taskBody = taskView.findViewById(R.id.textView12);
             taskState = taskView.findViewById(R.id.textView13);
             this.onTaskListener = onTaskListener;
             taskView.setOnClickListener(this);
         }
-
         @Override
         public void onClick(View v) {
             onTaskListener.onTaskClick(getAdapterPosition());
         }
-
-//        @Override
-//        public void onClick(View view) {
-//            int taskPosition = RecyclerView.getChildLayoutPosition(view);
-////            String item = mList.get(itemPosition);
-////            Toast.makeText(mContext, item, Toast.LENGTH_LONG).show();
-//            int taskPosition=getAdapterPosition();
-//            Intent intent;
-//        }
     }
-
     public interface OnTaskListener {
         void onTaskClick(int position);
     }
-
     @NonNull
     @Override
     public TaskAdapter.TaskViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_task, parent, false);
-        TaskViewHolder viewHolder = new TaskViewHolder(view,mOnTaskListener);
-        //action of the listener
-//public void taskListener{
-//
-//        }
-
-
         return new TaskViewHolder(view, mOnTaskListener);
-
-
     }
-
     @Override
     public void onBindViewHolder(@NonNull TaskAdapter.TaskViewHolder holder, int position) {
         holder.task = tasks.get(position);
-
         TextView taskTitle = holder.taskTitle.findViewById(R.id.textView11);
         TextView taskBody = holder.taskBody.findViewById(R.id.textView12);
         TextView taskState = holder.taskState.findViewById(R.id.textView13);
         taskTitle.setText(holder.task.getTitle());
         taskBody.setText(holder.task.getBody());
         taskState.setText(holder.task.getState());
-
     }
 
     @Override
