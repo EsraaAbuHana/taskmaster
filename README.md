@@ -23,7 +23,5 @@ create an `all tasks activity` should just be an image with a back button .
 # Lab: 29 - Room
 ### Wireframes
 # ![main](screenshots/main28.JPG)
-# ![add task](screenshots/add.JPG)
-# ![all tasks](screenshots/all.JPG)
-# ![setting](screenshots/setting.JPG)
-# ![details](screenshots/details.JPG)
+# ![add task](screenshots/add28.JPG)
+# ![details](screenshots/details28.JPG)
