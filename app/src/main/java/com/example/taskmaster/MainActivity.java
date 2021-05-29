@@ -14,6 +14,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.amplifyframework.AmplifyException;
+import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.AWSDataStorePlugin;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +26,17 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.OnTas
     ArrayList<Task> tasks=new ArrayList<>() ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //AWS
+        //////////////////////////////////////////////////////
+//        try {
+//            Amplify.addPlugin(new AWSDataStorePlugin());
+//            Amplify.configure(getApplicationContext());
+//
+//            Log.i("Tutorial", "Initialized Amplify");
+//        } catch (AmplifyException e) {
+//            Log.e("Tutorial", "Could not initialize Amplify", e);
+//        }
+        //////////////////////////////////////////////////////////////////////
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         addTask = findViewById(R.id.button2);

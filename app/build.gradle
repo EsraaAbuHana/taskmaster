@@ -54,4 +54,9 @@ dependencies {
 
     // optional - Test helpers
     testImplementation "androidx.room:room-testing:$room_version"
+
+
+    //AWS
+    implementation 'com.amplifyframework:aws-api:1.17.4'
+    implementation 'com.amplifyframework:aws-datastore:1.17.4'
 }
