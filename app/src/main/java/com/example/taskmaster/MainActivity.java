@@ -54,14 +54,14 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.OnTas
         tasksRecyclerView.setAdapter(new TaskAdapter(tasks, this));
        tasksRecyclerView.setLayoutManager(new LinearLayoutManager(this));
        //AWS
-//       Task item = Task.builder()
-//                .title("Build Android application")
-//                .description("Build an Android application using Amplify")
-//                .build();
-//        Amplify.DataStore.save(item,
-//                success -> Log.i("Tutorial", "Saved item: " + success.item().getName()),
-//                error -> Log.e("Tutorial", "Could not save item to DataStore", error)
-//        );
+        Task item = Task.builder()
+                .title("Build Android application")
+                .description("Build an Android application using Amplify")
+                .build();
+        Amplify.DataStore.save(item,
+                success -> Log.i("Tutorial", "Saved item: " + success.item().getName()),
+                error -> Log.e("Tutorial", "Could not save item to DataStore", error)
+        );
         //////////////////////////////////////////////////////////////////
     }
     public void addTask(View view) {
