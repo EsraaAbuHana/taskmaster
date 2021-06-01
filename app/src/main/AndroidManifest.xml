@@ -8,18 +8,26 @@
         android:label="@string/TaskMaster"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyFirstApplication">
+        android:theme="@style/Theme.MyFirstApplication"
+
+        >
+
         <activity android:name=".SettingsPage"></activity>
         <activity android:name=".TaskDetailPage" />
         <activity android:name=".AllTasks" />
         <activity android:name=".AddTask" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"/>
+        <activity  android:name=".MyAmplifyApp">
+            
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
     </application>
+
 
 </manifest>

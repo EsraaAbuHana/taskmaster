@@ -14,6 +14,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.amplifyframework.AmplifyException;
+import com.amplifyframework.core.Amplify;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +25,15 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.OnTas
     ArrayList<Task> tasks=new ArrayList<>() ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+            try {
+                Amplify.configure(getApplicationContext());
+                Log.i("MyAmplifyApp", "Initialized Amplify");
+            } catch (AmplifyException error) {
+                Log.e("MyAmplifyApp", "Could not initialize Amplify", error);
+            }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         addTask = findViewById(R.id.button2);
