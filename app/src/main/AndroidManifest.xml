@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyFirstApplication">
-        <activity android:name=".SettingsPage"></activity>
+        <activity android:name=".SingUp"></activity>
+        <activity android:name=".LogIn" />
+        <activity android:name=".SettingsPage" />
         <activity android:name=".TaskDetailPage" />
         <activity android:name=".AllTasks" />
         <activity android:name=".AddTask" />

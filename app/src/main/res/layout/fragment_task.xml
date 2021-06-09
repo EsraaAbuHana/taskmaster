@@ -17,7 +17,7 @@
         <!--        android:text="@string/hello_blank_fragment" />-->
 
         <TextView
-            android:id="@+id/textView11"
+            android:id="@+id/textViewLogin"
             android:layout_width="237dp"
             android:layout_height="32dp"
             android:layout_marginStart="20dp"
@@ -53,7 +53,7 @@
             android:layout_marginTop="10dp"
             android:text="Task State"
             android:textColor="#3F51B5"
-            app:layout_constraintStart_toEndOf="@+id/textView11"
+            app:layout_constraintStart_toEndOf="@+id/textViewLogin"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

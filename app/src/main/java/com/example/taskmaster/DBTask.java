@@ -7,6 +7,8 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import com.amplifyframework.datastore.generated.model.Task;
+
 @Database(entities = {Task.class}, version = 1)
 public abstract class DBTask extends RoomDatabase {
     public abstract DAOsTask dAOsTask();
